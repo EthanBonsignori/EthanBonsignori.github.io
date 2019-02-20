@@ -10,11 +10,7 @@ h1, h2, h3, h4, h5 {
     font-family: Georgia, 'Times New Roman'
 }
 
-h2 {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
+/* Header */
 header {
     border-bottom: 2px solid #efefef;
 }
@@ -41,11 +37,21 @@ header {
 }
 
 #myname {
+    text-decoration: none;
     margin: 0;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 25px;
     background-color: #4aaaa5;
+}
+
+#myname a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#myname:hover{
+    background-color: #666666
 }
 
 .nav {
@@ -77,14 +83,20 @@ header {
 
 #borderL {border-left: 2px solid #efefef;}
 
-/*End header
-Begin main content */
-
+/* Main content */
 .background {
     padding-top: 36px;
     padding-bottom: 120px;
     background-image: url(../images/white-waves.png);
-    min-height: calc(100vh - 245px);
+    min-height: calc(80vh - 25px);
+    margin: 0 auto -50px;
+}
+
+.background2 {
+    padding-top: 36px;
+    padding-bottom: 120px;
+    background-image: url(../images/just-waves.png);
+    min-height: calc(80vh - 25px);
     margin: 0 auto -50px;
 }
 
@@ -93,9 +105,10 @@ Begin main content */
     margin: 0px auto;
     width: 960px;
     background-color: #ffffff;
+    overflow: auto;
 }
 
-#contenttitle {
+.contenttitle {
     color: #4aaaa5;
     padding-left: 30px;
     padding-top: 10px;
@@ -111,22 +124,10 @@ Begin main content */
 
 .content {
     padding: 30px;
-}
-
-.portfolio-content {
-    padding: 30px;
-    width: 500px;
-}
-
-.portfolio-pic {
-    padding-right: 30px;
-    padding-bottom: 30px;
-}
-
-p {
     line-height: 2;
     color: #666666;
 }
+
 
 .profilepic {
     height:200px;
@@ -137,6 +138,71 @@ p {
     float: left;
 }
 
+/* Portfolio */
+
+.portfolio-content {
+    padding: 30px;
+}
+
+.portfolio-pic {
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+    margin-right: 40px;
+}
+
+.portfolio-text {
+    position: absolute;
+    width: 100%;
+    background-color: #4aaaa5;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    bottom: 12px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+.portfolio-pic:hover > .portfolio-text {
+    background-color: #666666;
+    opacity: 0.8;
+}
+
+
+.portfolio-text:hover {
+    opacity: 0.8;
+}
+
+/* Contact form */
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px; 
+    box-sizing: border-box; 
+    border: 1px solid #dddddd;
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #4aaaa5;
+    color: white;
+    padding: 12px 33px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #666666;
+  }
+  
+
+  /* Footer */
 .footer {
     position: fixed;
     left: 0;
@@ -150,44 +216,53 @@ p {
 }
 
 #copyright {
-    position: relative;
-    bottom: -33px;
-    color: #c1c1c1;
-    text-align: center;
+    position: absolute;
     font-size: 80%;
-    line-height: 20px;
-    margin: 0;
+    text-align: center;
+    width: 100%;
+    bottom: 5px;
+    text-decoration: none;
+    color: #c1c1c1;
 }
 
-/* Contact form */
-input[type=text], select, textarea {
-    width: 100%; /* Full width */
-    padding: 12px; /* Some padding */  
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 4px; /* Rounded borders */
-    box-sizing: border-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-  }
-  
-  /* Style the submit button with a specific background color etc */
-  input[type=submit] {
+#copyright:hover {
+    color: #4aaaa5;
+}
+
+/* Feedback page */
+#feedbackwrap {
+    margin: 0 auto;
+    padding: 100px;
+}
+
+.feedback {
+    color: #4aaaa5;
+    text-align: center;
+    margin: 0 auto 0 auto;
+}
+
+#returnbox {
+    text-align: center;
     background-color: #4aaaa5;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* When moving the mouse over the submit button, add a darker green color */
-  input[type=submit]:hover {
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 5px;
+}
+
+#return {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+#returnbox:hover {
     background-color: #666666;
-  }
-  
-  /* Add a background color and some padding around the form */
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+    color: #ffffff;
+}
+
+#mail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
