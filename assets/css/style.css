@@ -184,10 +184,9 @@ input[type=text], select, textarea {
     border: 1px solid #dddddd;
     margin-top: 6px; 
     margin-bottom: 16px; 
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    resize: vertical;
   }
   
-  /* Style the submit button with a specific background color etc */
   input[type=submit] {
     background-color: #4aaaa5;
     color: white;
@@ -241,12 +240,14 @@ input[type=text], select, textarea {
     margin: 0 auto 0 auto;
 }
 
-#returnbox {
+#returnwrap {
     text-align: center;
+}
+
+#returnbox {
     background-color: #4aaaa5;
-    margin-left: 40%;
-    margin-right: 40%;
-    padding: 5px;
+    padding: 5px 40px;
+    display: inline-block;
 }
 
 #return {
