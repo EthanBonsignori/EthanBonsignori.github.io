@@ -1,0 +1,313 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+html, body {
+  font-family: 'Arial', "Helvetica Neue", Helvetica, sans-serif;
+  height: 100%;
+}
+
+body {
+  background-image: url("../images/escheresque_edited.png");
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: Georgia, 'Times New Roman';
+  font-size: 2em;
+}
+
+/*-- Navbar --*/
+.navbar {
+  padding: 0rem 1rem 0 1rem;
+  border-bottom: 1px solid #191C23;
+}
+
+.navbar-name {
+  color: #ffffff;
+  background-color: #BB0A1E;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.navbar-name:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #6F777D;
+}
+
+.navbar-name:active {
+  background-color: #343a40;
+}
+
+.custom-toggler.navbar-toggler{
+  border-color: #BB0A1E;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187,10,30, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/*--
+.navbar-nav > li > a::after {
+  content: "|";
+  padding-left: 1rem;
+}
+
+.navbar-nav > li:last-child > a::after {
+  content: '';
+  padding-left: 0;
+}
+--*/
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #BB0A1E;
+}
+ 
+.divider {
+  color: rgba(255, 255, 255, 0.2);
+  position: relative;
+  left: 5px;
+}
+
+/*-- Page Content --*/
+.bg {
+  background-image: url("../images/escheresque_edited.png");
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+
+.jumbotron {
+  padding: 0.5rem 2rem 1rem 2rem;
+}
+
+.jumbotron-dark {
+  color: rgba(255,255,255,.5);
+  border: 1px solid #191C23;
+  border-radius: 0;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/*-- Index / About me --*/
+.profilepic {
+  height: 200px;
+  width: 200px;
+  border: 1px solid #191C23;
+}
+
+.hr {
+  margin-top: 3rem;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 3px solid #BB0A1E;
+  text-align: center;
+  height: 10px;
+  line-height: 0px;
+}
+
+.hr-title {
+  background-color: #343a40;
+  padding: 0 2rem 0 2rem;
+  position: relative;
+  top: -1.3rem;
+  font-size: 2em;
+}
+
+.icon {
+  font-size: 4.5rem;
+  text-align: center;
+  color: rgba(255,255,255,.5);
+  margin-top: 1rem;
+}
+
+.icon:hover {
+  color: rgba(187, 10, 31, 0.9);
+}
+
+.icon:active {
+  color: rgba(92, 6, 16, 0.9);
+}
+
+.icon-title {
+  font-family: 'Arial', "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1rem;
+  display: block;
+  padding-top: 0.5rem;
+}
+
+/*-- Portfolio --*/
+
+.card {
+  border: 1px solid #191C23;
+  border-radius: 0;
+}
+
+.card-img {
+  border-radius: 0;
+}
+
+.card-title {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 1rem 0 1rem 0;
+}
+
+.card-title-bg {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  background-color: #BB0A1E;
+  text-align: center;
+}
+
+.portfolio-link {
+  text-decoration: none;
+}
+
+.portfolio-link:hover .card-title-bg {
+  text-decoration: none;
+  background-color: rgba(111, 119, 125, 0.8);
+}
+
+
+.portfolio-link:active .card-title-bg {
+  text-decoration: none;
+  background-color: rgb(81, 87, 92);
+}
+
+/*-- Contact Page --*/
+
+.form-control {
+  border-radius: 0;
+  background-color: rgba(255,255,255,.9);
+}
+
+.btn-send {
+  background-color: #BB0A1E;
+  color: rgba(255,255,255,.9);
+  border-radius: 0;
+}
+
+
+/*-- Footer --*/
+.footer {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #343a40;
+  border-top: 8px solid #BB0A1E;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+
+
+.multi-border {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+  border-top: 1px solid #191C23;
+}
+
+
+
+.copyright {
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+}
+
+.copyright:hover {
+  color: #BB0A1E;
+  text-decoration: none;
+}
+
+
+/*-- Media Queries --*/
+@media screen and (max-width: 992px) {
+ /* .navbar-nav > li > a::after {
+    content: '';
+  } */
+
+  .divider {
+    display: none;
+  }
+  
+  .navbar-nav > li > a {
+    background-color: #6F777D;
+    margin-top: 0.5rem;
+    border: 1px solid #191C23;
+  }
+
+  .navbar-dark .navbar-nav .nav-link {
+      color: #ffffff;
+      font-size: 1.3rem;
+      padding-left: 1rem;
+  }
+
+  .navbar-nav > li:last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .card-title-bg {
+    bottom: 5px;
+  }
+  
+}
+@media screen and (max-width: 768px) {
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-title-bg {
+    bottom: 2px;
+  }
+  
+}
+@media screen and (max-width: 576px) {
+  
+  .card-title {
+    font-size: 12px;
+  }
+
+}
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+
+
+
+
+
+
+
