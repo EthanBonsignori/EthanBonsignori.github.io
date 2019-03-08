@@ -2,10 +2,13 @@
 const hangman = {
   wins: 0,      // Number of times the user successfully guessed the word
   losses: 0,    // Number of times the user ran out of guesses
-  guesses: 10,  // User's guesses remaining
+  guesses: 8,  // User's guesses remaining
   
   // List of words to choose from for the user to guess
-  countries: ["united states of america", "japan", "canada", "new zealand", "russia", "sweden"],
+  countries: ["United States of America", "Japan", "Canada", "New Zealand", "Russia", "Sweden", "Zimbabwe", "Italy", "South Africa",
+              "Pakistan", "China", "Saudi Arabia", "Singapore", "India", "Turkey", "Vietnam", "Israel", "Belgium", "Norway", "France",
+              "Spain", "Greece", "Ireland", "Germany", "United Kingdom", "Switzerland", "Brazil", "Argentina", "Venezuela", "Mexico",
+              "Trinidad and Tobago", "Australia"],
 
   alphabet:  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
               "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
@@ -21,15 +24,23 @@ const hangman = {
   wonText: document.getElementById('won'),
   lostText: document.getElementById('lost'),
   tryAgainText: document.getElementById('try-again'),
+  flagImage: document.getElementById('flag'),
 
   // Reset button
   reset: document.getElementById('reset').onclick = function() {
+    this.blur();  // Stops web page from focusing button so it can't be triggered with spacebar after being pressed
     hangman.usedLetters.length = 0;  // Reset the used letters array
     hangman.underscores.length=  0;  // Reset the chosen word
-    hangman.guesses = 10;            // Reset guesses
+    hangman.guesses = 8;            // Reset guesses
     letters.parentNode.removeChild(letters); // Removes the letters display
     hangman.randomWord();            // Pick a new word
     hangman.createAlphabet();        // Resets the used letters display
+    hangman.tryAgainText.className = "hidden";
+    hangman.debug();
+  },
+
+  // Allows users to click alert to hide it instead of waiting for it to fade on next guess
+  hideTryAgainText: document.getElementById('try-again').onclick = function() {
     hangman.tryAgainText.className = "hidden";
   },
 
@@ -43,6 +54,8 @@ const hangman = {
       list = document.createElement('li');
       list.id = hangman.alphabet[i];
       list.innerHTML = hangman.alphabet[i];
+      // Add click event to each letter that guesses it's corresponding letter
+      list.onclick = function() { hangman.checkGuess({key: hangman.alphabet[i]}) }
       myButtons.appendChild(letters);
       letters.appendChild(list);
     }
@@ -52,14 +65,18 @@ const hangman = {
   update: function() {
     hangman.underscoreText.textContent = hangman.underscores.join('');
     hangman.guessesText.textContent = "You have " + hangman.guesses + " guesses";
-    hangman.wonText.textContent = "Won: " + hangman.wins;
-    hangman.lostText.textContent = "Lost: " + hangman.losses;
+    // If word is completed
     if (hangman.underscores.indexOf('_') === -1) {
       hangman.guessesText.textContent = "You win!"
       hangman.wins++;
+      hangman.wonText.textContent = "Won: " + hangman.wins;
+      // Show flag
+      hangman.flagImage.style.opacity = 1;
+      // If out of guesses
     } else if (hangman.guesses === 0) {
       hangman.guessesText.textContent = "You lose, try again!"
       hangman.losses++;
+      hangman.lostText.textContent = "Lost: " + hangman.losses;
     }
   },
 
@@ -68,6 +85,8 @@ const hangman = {
   randomWord: function() {  
     let randomNumber = Math.floor(Math.random() * this.countries.length);
     this.chosenWord = this.countries[randomNumber];
+    this.getFlag();
+    this.chosenWord = this.chosenWord.toLowerCase();
       // Adds one underscore per letter in the randomly selected word from the countries array
       for (let i = 0; i < this.chosenWord.length; i++) {
         if (this.chosenWord[i] === ' ') {
@@ -77,6 +96,21 @@ const hangman = {
         }
       }
       this.update();
+  },
+
+  // Get images for flags dynamically
+  getFlag: function() {
+    // Set the background-image of the flag element to the flag url
+    function newImage() {
+      hangman.flagImage.style.opacity = 0;
+      hangman.flagImage.style.backgroundImage = 'url(' + flagUrl(hangman.chosenWord) +')'
+    }
+    // Function that returns url of flag
+    function flagUrl (country) {
+      country = country.split(' ').join('-')
+      return "https://www.countries-ofthe-world.com/flags-normal/flag-of-"+(country)+".png"
+    }
+    newImage();
   },
 
 
@@ -121,20 +155,20 @@ const hangman = {
       hangman.debug(); // Display info to console once per playerGuess
   },
 
-  
+  // Checks if letter is in the alphabet and not some other key
   isLetter: function(letter) {
     return letter.length === 1 && letter.match(/[a-z]/i);
   },
 
-
+  // Changes class of letter display so it appears "used"
   onGuess: function() {
     for (const letter of hangman.usedLetters) {
       document.querySelector("#" + letter).className = "usedLetter";
     }
   },
 
-
-  debug: function() { // Outputs necessary variables to console for debugging
+  // Outputs necessary variables to console for debugging
+  debug: function() {
     console.log("========= Start Debug =========")
     console.log("Wins: " + this.wins);
     console.log("Losses: " + this.losses);
@@ -146,11 +180,17 @@ const hangman = {
   }
 };
 
+// Init game
 hangman.createAlphabet();
 hangman.randomWord();
 hangman.debug();
 
+// Listener
 document.onkeyup = hangman.checkGuess;
+
+
+
+
 
 
 

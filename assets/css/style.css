@@ -3,7 +3,7 @@
 
 html {
   border: 30px solid #A95800;
-  height: 100%;
+  min-height: 100%;
   box-shadow: inset 0 0 50px 5px #A95800;
 }
 
@@ -15,7 +15,7 @@ body {
 
 .container {
   height: 100%;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .map-border {
@@ -24,6 +24,7 @@ body {
   background: url(../images/map.jpg) no-repeat;
   background-position: center;
   border-radius: 25px;
+  border: 1px solid #183945;
 }
 
 .title {
@@ -38,7 +39,7 @@ body {
   top: -70px;
   font-family: 'Fondamento', cursive;
   font-size: 80px;
-  color: #1FBDF6;
+  color: #ABA435;
   margin: 0;
 
   text-shadow:
@@ -51,6 +52,17 @@ body {
   -ms-transform: rotate(-4deg);
   -webkit-transform: rotate(-4deg);
   transform: rotate(-4deg);
+}
+
+.sub2 {
+  position: relative;
+  padding: 10px;
+  bottom: 14px;
+  display: inline-block;
+  background-color: #1FBDF6;
+  border-top: 2px solid #183945;
+  border-left: 2px solid #183945;
+  border-right: 2px solid #183945;
 }
 
 
@@ -67,24 +79,25 @@ body {
 
 #underscores {
   font-family: 'Major Mono Display', monospace;
-  color: #1FBDF6;
-  font-size: 300%;
+  color: #000;
+  font-size: 3rem;
   font-weight: bold;
   text-shadow:
   -1px -1px 0 #000,  
    1px -1px 0 #000,
    -1px 1px 0 #000,
     1px 1px 0 #000;
+  padding-top: 2rem;
 }
 
 .letters {
   font-family: 'Major Mono Display', monospace;
   color: #183945;
-  border: dashed 3px #183945;
+  border: dashed 3px #000;
 }
 
 #letter-list {
-  margin: 10px auto;
+  margin: 15px auto 10px 25px;
   padding: 0;
   align-items: center;
 }
@@ -107,6 +120,7 @@ body {
   border: solid 2px #116973;
   border-radius: 5px;
   box-shadow: inset -10px -5px 15px #183945;
+  cursor: pointer;
 }
 
 .usedLetter {
@@ -117,13 +131,16 @@ body {
 }
 
 #try-again {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
   font-family: 'Major Mono Display', monospace;
-  display: inline;
   color: white;
   border: 15px solid #D82B03;
   border-radius: 40px;
   background: #D82B03;
 }
+
 
 .visible {
   visibility: visible;
@@ -139,21 +156,145 @@ body {
   transition: visibility 0s 1.5s, opacity 1.5s linear;
 }
 
-.flag {
-  background-image: url(../images/flags/us.png);
+#reset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 2rem;
+  color: #122c35;
+  background-color: #1FBDF6;
+  border-left: 2px solid #183945;
+  border-top: 2px solid #183945;
+  border-bottom: none;
+  border-right: none;
+  border-bottom-right-radius: 21px;
+  box-shadow: inset -10px -5px 35px #183945;
+}
+
+#flagpole {
+  position: absolute;
+  display: inline-block;
+  bottom: 84px;
+  left: 5%;
+  height: 210px;
+  width: 20px;
+  background-image: linear-gradient(to right, #2f4353, #d2ccc4, #2f4353);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#blankflag {
+  position: absolute;
+  display: inline-block;
+  bottom: 190px;
+  left: 6.3%;
+  height: 88px;
+  width: 155px;
+  border: 1px solid black;
+  background: url(../images/blank-flag.png);
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+#flag {
+  position: absolute;
+  display: inline-block;
+  bottom: 190px;
+  left: 6.3%;
+  height: 88px;
+  width: 155px;
+  border: 1px solid black;
+  background-size: cover;
+}
+
+button:focus {
+  outline: none;
 }
 
 /*-- Media Queries --*/
+@media all and (max-width: 1199px) {
+  .title {
+    font-size: 5rem;
+  }
+
+  .subtitle {
+    font-size: 4rem;
+  }
+
+  .sub2 {
+    bottom: -30px;
+  }
+
+  #underscores {
+    font-size: 2.5rem;  
+  }
+
+  #flagpole {
+    height: 180px;
+    width: 18px;
+  }
+
+  #flag, #blankflag {
+    height: 68px;
+    width: 125px;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .stats {
+    width: 150px;
+  }
+
+  #won, #lost {
+    font-size: 1.5rem;
+  }
+
+  #underscores {
+    font-size: 2rem;  
+  }
+
+  #flagpole {
+    display: none;
+  }
+
+  #flag, #blankflag {
+    bottom: 0;
+    top: 0;
+    right: auto;
+    left: auto;
+  }
+
 @media all and (max-width: 768px) {
   .title {
     font-size: 75px;
   }
+
   .subtitle {
     font-size: 60px;
     top: -50px;
+  }
+
+  .stats {
+    width: 100px;
+  }
+
+  #won, #lost {
+    font-size: 1rem;
+  }
+
+  .sub2 {
+    bottom: -59px;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  #reset {
+    font-size: 1rem;
+  }
+  
+  #underscores {
+    font-size: 1.5rem;  
   }
  }
 
@@ -161,9 +302,14 @@ body {
   .title {
     font-size: 50px;
   }
+
   .subtitle {
     font-size: 40px;
     top: -30px;
+  }
+
+  .sub2 {
+    bottom: -113px;
   }
 }
 
