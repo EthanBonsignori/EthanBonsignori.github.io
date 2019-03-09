@@ -1,7 +1,8 @@
 /*-- Custom Fonts --*/
-@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Fondamento|Major+Mono+Display');
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Fondamento|Ubuntu|Major+Mono+Display');
 
 html, body {
+  font-family: 'Ubuntu', sans-serif;
   height: 100%;
 }
 
@@ -9,19 +10,6 @@ body {
   background: #F68E1F;
   text-align: center;
   color: #183945;
-}
-
-.page-border {
-  position: fixed;
-  top: 0;
-  left: 0;
-  border: 30px solid #A95800;
-  box-shadow: inset 0 0 50px 5px #A95800;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .container {
@@ -45,8 +33,14 @@ body {
   height: 400px;
   background: url(../images/map.jpg) no-repeat;
   background-position: center;
-  border-radius: 25px;
-  border: 1px solid #183945;
+
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+
+  box-shadow: inset 0px -15px 60px #183945;
 }
 
 .title {
@@ -87,16 +81,36 @@ body {
   border-right: 2px solid #183945;
 }
 
-
 .stats {
-  position: absolute;
+  position: relative;
+  width: 100%;
   bottom: 0px;
   left: 0px;
   background-color: #1FBDF6;
-  width: 200px;
-  border-top: 2px solid #183945;
-  border-right: 2px solid #183945;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
   border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  box-shadow: inset 0px -5px 10px #183945;
+}
+
+#won, #lost {
+  display: inline;
+}
+
+#won {
+  color: green;
+}
+
+#lost {
+  color: red;
+}
+
+#won::after {
+  color: #000;
+  content: ' | '
 }
 
 #underscores {
@@ -113,6 +127,7 @@ body {
 }
 
 .letters {
+  position: relative;
   font-family: 'Major Mono Display', monospace;
   color: #183945;
   border: dashed 3px #000;
@@ -158,13 +173,46 @@ body {
   box-shadow: inset 10px 5px 15px rgb(75, 75, 75, 0.3) !important;
 }
 
+#instructions {
+  position: absolute;
+  top: 5rem;
+  left: 33.33%;
+  right: 33.33%;
+
+  background: rgb(233, 233, 233);
+  padding-left: 3rem;
+  padding-top: 1rem;
+
+  border: 1px solid black;
+}
+
+#show-info, #hide-info {
+  position: absolute;
+  border: none;
+  background: none;
+  font-size: 3rem;
+  color: #183945;
+}
+
+#show-info {
+  right: 10px;
+  bottom: 5px;
+}
+
+#hide-info {
+  top: 0;
+  right: 1rem;
+}
+
 #try-again {
-  display: block;
-  margin: 0 auto;
-  width: 40%;
+  display: inline;
+  position: absolute;
+  bottom: 0;
+  right: 30%;
+  left: 30%;
   font-family: 'Major Mono Display', monospace;
   color: white;
-  border: 15px solid #D82B03;
+  border: 1px solid #D82B03;
   border-radius: 40px;
   background: #D82B03;
 }
@@ -172,7 +220,7 @@ body {
 
 .visible {
   visibility: visible;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .hidden {
@@ -184,18 +232,17 @@ body {
   transition: visibility 0s 1.5s, opacity 1.5s linear;
 }
 
+.hidden-instant {
+  visibility: hidden;
+  opacity: 0;
+}
+
 #reset {
-  position: absolute;
-  right: 0;
-  bottom: 0;
   font-size: 2rem;
+  margin-top: 0.5rem;
   color: #122c35;
   background-color: #1FBDF6;
-  border-left: 2px solid #183945;
-  border-top: 2px solid #183945;
-  border-bottom: none;
-  border-right: none;
-  border-bottom-right-radius: 21px;
+  border: 2px solid #183945;
   box-shadow: inset -10px -5px 35px #183945;
 }
 
@@ -207,36 +254,42 @@ body {
 #flagpole {
   position: absolute;
   display: inline-block;
-  bottom: 84px;
+  bottom: 0;
   left: 5%;
   height: 210px;
   width: 20px;
   background-image: linear-gradient(to right, #2f4353, #d2ccc4, #2f4353);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+
+  box-shadow: 25px 0px 40px #000;
 }
 
 #blankflag {
   position: absolute;
   display: inline-block;
-  bottom: 190px;
+  bottom: 110px;
   left: 6.3%;
   height: 88px;
   width: 155px;
   border: 1px solid black;
   background: url(../images/blank-flag.png);
   background-size: cover;
+
+  box-shadow: 25px 25px 100px #000;
 }
 
 #flag {
   position: absolute;
   display: inline-block;
-  bottom: 190px;
+  bottom: 110px;
   left: 6.3%;
   height: 88px;
   width: 155px;
   border: 1px solid black;
   background-size: cover;
+
+  box-shadow: 15px 20px 120px #000;
 }
 
 button:focus {
@@ -261,10 +314,6 @@ button:focus {
     font-size: 4rem;
   }
 
-  .sub2 {
-    bottom: -30px;
-  }
-
   #underscores {
     font-size: 2.5rem;  
   }
@@ -281,10 +330,6 @@ button:focus {
 }
 
 @media all and (max-width: 991px) {
-  .stats {
-    width: 150px;
-  }
-
   #won, #lost {
     font-size: 1.5rem;
   }
@@ -293,7 +338,7 @@ button:focus {
     font-size: 2rem;  
   }
 
-  #flagpole {
+ /* #flagpole {
     display: none;
   }
 
@@ -302,7 +347,7 @@ button:focus {
     top: 0;
     right: auto;
     left: auto;
-  }
+  } */
 
 @media all and (max-width: 768px) {
   .title {
@@ -314,16 +359,8 @@ button:focus {
     top: -50px;
   }
 
-  .stats {
-    width: 100px;
-  }
-
   #won, #lost {
     font-size: 1rem;
-  }
-
-  .sub2 {
-    bottom: -59px;
   }
 
   h2 {
@@ -349,8 +386,5 @@ button:focus {
     top: -30px;
   }
 
-  .sub2 {
-    bottom: -113px;
-  }
 }
 

@@ -11,6 +11,9 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <!-- Font Awesome (Icons) -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
   <!-- My CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -22,17 +25,16 @@
 
       <div class="map-border">
         <h1 class="title">HANGMAN<h1 class="subtitle">Countries</h1></h1>
-        <div class="stats">
-          <h3 id="won">Won: 0</h3>
-          <h3 id="lost">Lost: 0</h3>
-        </div>
         <div id="flagpole"></div>
         <div id="blankflag"></div>
         <div id="flag"></div>
-        <div class="sub2">
-          <h2>Guess the Country</h2>
-        </div>
-        <button id="reset">Play Again</button>
+        <button id="show-info">
+            <i class="far fa-question-circle"></i>
+        </button>
+      </div>
+      <div class="stats">
+          <h3 id="won">0</h3>
+          <h3 id="lost">0</h3>
       </div>
       
       <h1 id="underscores"></h1>
@@ -41,17 +43,24 @@
       
       <div class="letters">
         <div id="letter-list"></div>
+        <div id="try-again" class="hidden">! already guessed that letter</div>
       </div>
       
-      <div id="try-again" class="hidden">! already guessed that letter</div>
+     
+      <button id="reset">Play Again</button>
 
-      <div class="instructions">
+      <div id="instructions" class="hidden">
+        <button id="hide-info">
+          <i class="far fa-times-circle"></i>
+        </button>
         <ol style="text-align:left">
           <li style="text-align: center; text-decoration: underline;"><h3>Instructions</h3></li>
           <li>1. Press <b>letter keys</b> on your keyboard or <b>click letters</b> in the letter box above to guess letters of the hidden word.</li>
           <li>2. You have <b>8 guesses</b> to correctly find all the letters in the hidden word.</li>
-          <li>3. You win a round if you guess the all the letters before running out of guesses. You lose a round if you run out of guesses.</li>
-          <li>4. Press <b>play again</b> when you win or lose to play another round.</li>
+          <li>3. You <b>win</b> a round if you guess the all the letters correctly.</li>
+          <li>4. You <b>lose</b> a round if you run out of guesses.</li>
+          <li>5. You only lose a guess on an incorrect guess!</li>
+          <li>6. Press <b>play again</b> when you win or lose to play another round.</li>
         </ol>
       </div>
 

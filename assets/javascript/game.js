@@ -1,8 +1,8 @@
 // Declare hangman object
 const hangman = {
-  wins: 0,      // Number of times the user successfully guessed the word
-  losses: 0,    // Number of times the user ran out of guesses
-  guesses: 8,  // User's guesses remaining
+  wins: 0,       // Number of times the user successfully guessed the word
+  losses: 0,     // Number of times the user ran out of guesses
+  guesses: 8,    // User's guesses remaining
   
   // List of words to choose from for the user to guess
   countries: ["United States of America", "Japan", "Canada", "New Zealand", "Russia", "Sweden", "Zimbabwe", "Italy", "South Africa",
@@ -18,20 +18,21 @@ const hangman = {
   chosenWord: "",   // Holds the randomly selected word from the randomWord function
   playerGuess: "",  // Holds the letter pressed by the player
 
-
+  // Grab and store html elements
   underscoreText: document.getElementById('underscores'),
   guessesText: document.getElementById('guesses'),
   wonText: document.getElementById('won'),
   lostText: document.getElementById('lost'),
   tryAgainText: document.getElementById('try-again'),
   flagImage: document.getElementById('flag'),
+  instructions: document.getElementById('instructions'),
 
   // Reset button
   reset: document.getElementById('reset').onclick = function() {
     this.blur();  // Stops web page from focusing button so it can't be triggered with spacebar after being pressed
     hangman.usedLetters.length = 0;  // Reset the used letters array
     hangman.underscores.length=  0;  // Reset the chosen word
-    hangman.guesses = 8;            // Reset guesses
+    hangman.guesses = 8;             // Reset guesses
     letters.parentNode.removeChild(letters); // Removes the letters display
     hangman.randomWord();            // Pick a new word
     hangman.createAlphabet();        // Resets the used letters display
@@ -69,14 +70,14 @@ const hangman = {
     if (hangman.underscores.indexOf('_') === -1) {
       hangman.guessesText.textContent = "You win!"
       hangman.wins++;
-      hangman.wonText.textContent = "Won: " + hangman.wins;
+      hangman.wonText.textContent = hangman.wins;
       // Show flag
       hangman.flagImage.style.opacity = 1;
       // If out of guesses
     } else if (hangman.guesses === 0) {
       hangman.guessesText.textContent = "You lose, try again!"
       hangman.losses++;
-      hangman.lostText.textContent = "Lost: " + hangman.losses;
+      hangman.lostText.textContent = hangman.losses;
     }
   },
 
@@ -165,6 +166,16 @@ const hangman = {
     for (const letter of hangman.usedLetters) {
       document.querySelector("#" + letter).className = "usedLetter";
     }
+  },
+
+  // Shows instructions
+  showInstructions: document.getElementById('show-info').onclick = function() {
+    hangman.instructions.className = "visible"
+  },
+
+  // Hides instructions
+  hideInstructions: document.getElementById('hide-info').onclick = function() {
+    hangman.instructions.className = "hidden-instant"
   },
 
   // Outputs necessary variables to console for debugging
